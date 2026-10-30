@@ -13,6 +13,7 @@ import {
 import useDebounce from "../../hooks/useDebounce";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import ConversionStatus from "../ConversionStatus/ConversionStatus";
+import ResultList from "../ResultList/ResultList";
 
 export default function Converter() {
   const [fromCode, setFromCode] = useState("PLN");
@@ -104,6 +105,10 @@ export default function Converter() {
         toAmount={toAmount}
         fromCode={fromCode}
         toCode={toCode}
+      />
+      <ResultList
+        convertResult={`${fromAmount} ${fromCode} = ${toAmount} ${toCode}`}
+        isLoading={convertingInProgress}
       />
       {convertError && (
         <ErrorMessage
